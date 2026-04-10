@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Joley & Co. ✦ Summer Retreat 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lora:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#B03A2E;--red-l:#C9574A;--red-d:#7A1E14;
+  --sage:#4F7042;--sage-l:#6A9058;
+  --blue:#4D6E7D;--blue-l:#6A8E9E;
+  --honey:#C08B2A;
+  --parch:#F4EDE3;--cream:#FDFAF5;--ecru:#EDE5D8;
+  --brn:#2C1A10;--brn-m:#6B4A36;--brn-s:#9E8070;
+  --shadow:0 2px 14px rgba(44,26,16,.11);
+  --nav:64px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--parch);color:var(--brn);min-height:100vh;overflow-x:hidden}
+
+/* NAV */
+.nav{position:fixed;bottom:0;left:0;right:0;height:var(--nav);background:var(--red-d);display:flex;box-shadow:0 -2px 20px rgba(0,0,0,.25);z-index:200}
+.nb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:none;background:transparent;color:rgba(255,255,255,.4);font-size:9px;font-family:'DM Sans',sans-serif;font-weight:600;letter-spacing:.4px;text-transform:uppercase;cursor:pointer;padding:6px 2px 10px;transition:color .2s}
+.nb.on{color:#F5D08A}
+.nb svg{width:22px;height:22px;stroke-width:1.6}
+
+/* SCREENS */
+.scr{display:none;padding-bottom:calc(var(--nav) + 16px);min-height:100vh}
+.scr.on{display:block}
+
+/* STICKY HEADER */
+.shead{background:linear-gradient(140deg,var(--red-d),var(--red));color:#fff;padding:18px 16px 14px;position:sticky;top:0;z-index:100}
+.shead h1{font-family:'Playfair Display',serif;font-size:21px;line-height:1.2}
+.shead p{font-size:12px;opacity:.72;margin-top:2px}
+
+/* CARDS */
+.card{background:var(--cream);border-radius:14px;box-shadow:var(--shadow);margin:12px 14px;overflow:hidden}
+.cp{padding:16px}
+
+/* HOME */
+.hero{background:linear-gradient(160deg,#6E1810 0%,var(--red) 55%,#BE5040 100%);padding:26px 18px 28px;color:#fff;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(45deg,rgba(255,255,255,.035) 25%,transparent 25%),linear-gradient(-45deg,rgba(255,255,255,.035) 25%,transparent 25%),linear-gradient(45deg,transparent 75%,rgba(255,255,255,.035) 75%),linear-gradient(-45deg,transparent 75%,rgba(255,255,255,.035) 75%);background-size:18px 18px;background-position:0 0,0 9px,9px -9px,-9px 0}
+.badge{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:4px 14px;font-size:10px;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:12px}
+.h-title{font-family:'Playfair Display',serif;font-size:28px;line-height:1.2;margin-bottom:4px}
+.h-sub{font-size:13px;opacity:.77;margin-bottom:22px}
+.cdown-row{display:flex;gap:10px;justify-content:center}
+.cbox{background:rgba(255,255,255,.13);border-radius:10px;padding:10px 14px;text-align:center;min-width:58px}
+.cnum{font-size:30px;font-weight:700;line-height:1}
+.clbl{font-size:9px;opacity:.68;text-transform:uppercase;letter-spacing:.9px;margin-top:2px}
+.event-live{background:rgba(255,255,255,.18);border-radius:10px;padding:12px 20px;font-size:14px;font-weight:600;letter-spacing:.3px}
+
+.stats3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:12px 14px 0}
+.sbox{background:var(--cream);border-radius:12px;padding:14px 8px;text-align:center;box-shadow:var(--shadow)}
+.snum{font-size:26px;font-weight:700;line-height:1}
+.slbl{font-size:10px;color:var(--brn-s);margin-top:3px;line-height:1.3}
+.snum.r{color:var(--red)}.snum.g{color:var(--sage)}.snum.b{color:var(--blue)}
+
+.prog-card{background:var(--cream);border-radius:12px;margin:10px 14px 0;padding:14px;box-shadow:var(--shadow)}
+.prog-lbl{display:flex;justify-content:space-between;font-size:12px;color:var(--brn-m);margin-bottom:8px}
+.pbar{height:10px;background:var(--ecru);border-radius:8px;overflow:hidden}
+.pfill{height:100%;background:linear-gradient(90deg,var(--red),#C05040);border-radius:8px;transition:width .5s}
+
+.sh{font-family:'Playfair Display',serif;font-size:18px;padding:18px 16px 6px;color:var(--brn)}
+
+.note-card{background:var(--cream);border-radius:14px;margin:0 14px 12px;box-shadow:var(--shadow);padding:14px}
+.note-date{font-size:11px;color:var(--brn-s);margin-bottom:8px}
+.note-ta{width:100%;border:none;outline:none;resize:none;font-family:'Lora',serif;font-size:14px;color:var(--brn);background:transparent;min-height:80px;line-height:1.7}
+.note-ta::placeholder{color:var(--brn-s)}
+
+/* STORES */
+.sbox2{padding:12px 14px 0}
+.sinput{width:100%;border:2px solid var(--ecru);border-radius:10px;padding:11px 14px;font-size:15px;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--brn);outline:none;transition:border-color .2s}
+.sinput:focus{border-color:var(--red-l)}
+.fscroll{display:flex;gap:8px;padding:10px 14px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.fscroll::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;padding:6px 14px;border-radius:20px;border:1.5px solid var(--ecru);background:var(--cream);font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;color:var(--brn-m);transition:all .2s;flex-shrink:0;font-weight:500}
+.chip.on{background:var(--red);border-color:var(--red);color:#fff}
+
+.swrap{padding:0 14px 10px}
+.stcard{background:var(--cream);border-radius:12px;box-shadow:var(--shadow);margin-bottom:10px;overflow:hidden}
+.strow{display:flex;align-items:center;gap:12px;padding:13px;cursor:pointer}
+.stamp{width:38px;height:38px;border-radius:50%;border:2.5px solid var(--ecru);background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:all .2s;font-size:16px;color:transparent}
+.stamp.S{background:var(--sage);border-color:var(--sage);color:#fff}
+.stamp.W{background:var(--honey);border-color:var(--honey);color:#fff}
+.stname{font-weight:600;font-size:14px;line-height:1.3}
+.stcity{font-size:12px;color:var(--brn-s);margin-top:2px}
+.rpill{font-size:10px;background:var(--ecru);color:var(--brn-m);padding:3px 8px;border-radius:10px;flex-shrink:0;white-space:nowrap;font-weight:500}
+.must-flag{font-size:14px;flex-shrink:0}
+
+.panel{border-top:1px solid var(--ecru);padding:14px;display:none;background:#FAF7F3}
+.panel.op{display:block}
+.drow{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:13px;color:var(--brn-m)}
+.drow a{color:var(--red);text-decoration:none}
+.di{flex-shrink:0;width:16px}
+.alert{background:#FFF8E7;border-left:3px solid var(--honey);padding:8px 10px;border-radius:0 8px 8px 0;margin-bottom:10px;font-size:12px;color:var(--brn-m);line-height:1.4}
+
+.sweet{background:#FEF0EE;border-left:3px solid var(--red-l);padding:10px 12px;border-radius:0 10px 10px 0;margin-bottom:10px}
+.sw-type{font-size:10px;color:var(--brn-s);text-transform:uppercase;letter-spacing:.8px;margin-bottom:2px}
+.sw-name{font-weight:700;font-size:13px;color:var(--red-d);margin-bottom:4px}
+.sw-tip{font-size:12px;color:var(--brn-m);font-style:italic;font-family:'Lora',serif;line-height:1.5}
+
+.cks{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
+.ck{display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:20px;border:1.5px solid var(--ecru);background:#fff;font-size:12px;cursor:pointer;transition:all .2s;color:var(--brn-m);font-family:'DM Sans',sans-serif}
+.ck.on{background:var(--sage);border-color:var(--sage);color:#fff}
+
+.tinput{width:100%;border:1.5px solid var(--ecru);border-radius:8px;padding:8px 10px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--brn);background:#fff;outline:none;margin-bottom:8px}
+.tinput:focus{border-color:var(--red-l)}
+.tarea{width:100%;border:1.5px solid var(--ecru);border-radius:8px;padding:8px 10px;font-size:13px;font-family:'Lora',serif;color:var(--brn);background:#fff;outline:none;resize:none;min-height:58px}
+.tarea:focus{border-color:var(--red-l)}
+
+.brow{display:flex;gap:8px;margin-top:8px}
+.abtn{flex:1;padding:8px;border-radius:8px;border:1.5px solid;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;text-align:center}
+.ag{border-color:var(--sage);color:var(--sage);background:#fff}.ag.on{background:var(--sage);color:#fff}
+.ah{border-color:var(--honey);color:var(--honey);background:#fff}.ah.on{background:var(--honey);color:#fff}
+.ar{border-color:var(--red);color:var(--red);background:#fff}.ar.on{background:var(--red);color:#fff}
+.ab{border-color:var(--blue);color:var(--blue);background:#fff}.ab.on{background:var(--blue);color:#fff}
+
+.stars{display:flex;gap:3px;margin:8px 0}
+.star{font-size:20px;cursor:pointer;color:var(--ecru);transition:color .15s;line-height:1}
+.star.on{color:var(--honey)}
+
+.spend-row{display:flex;align-items:center;gap:8px;margin-top:8px}
+.spend-lbl{font-size:12px;color:var(--brn-s);flex-shrink:0}
+.spend-in{border:1.5px solid var(--ecru);border-radius:8px;padding:6px 8px;font-size:14px;width:90px;text-align:right;font-family:'DM Sans',sans-serif;color:var(--brn);outline:none;background:#fff}
+.spend-in:focus{border-color:var(--red-l)}
+
+/* TRIPS */
+.fab{position:fixed;bottom:calc(var(--nav) + 14px);right:16px;width:52px;height:52px;border-radius:50%;background:var(--red);color:#fff;border:none;font-size:26px;cursor:pointer;box-shadow:0 4px 18px rgba(176,58,46,.4);display:flex;align-items:center;justify-content:center;z-index:150;transition:transform .2s}
+.fab:active{transform:scale(.92)}
+.tcard{background:var(--cream);border-radius:14px;margin:10px 14px;box-shadow:var(--shadow);overflow:hidden}
+.thead{background:linear-gradient(120deg,var(--red-d),var(--red));padding:13px 16px;color:#fff;display:flex;align-items:center;gap:10px}
+.tnin{flex:1;background:transparent;border:none;outline:none;color:#fff;font-family:'Playfair Display',serif;font-size:17px;font-weight:700}
+.tnin::placeholder{color:rgba(255,255,255,.45)}
+.tdin{border:none;background:rgba(255,255,255,.15);border-radius:6px;color:#fff;font-size:11px;font-family:'DM Sans',sans-serif;padding:4px 8px;outline:none}
+.tdel{background:rgba(255,255,255,.17);border:none;color:#fff;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:12px;flex-shrink:0}
+.tbody{padding:12px 14px}
+.tsitem{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--ecru);font-size:13px}
+.tsitem:last-child{border-bottom:none}
+.trm{border:none;background:none;color:var(--brn-s);font-size:18px;cursor:pointer;padding:0 4px}
+.addst{width:100%;padding:10px;border:1.5px dashed var(--ecru);border-radius:8px;background:none;cursor:pointer;color:var(--brn-s);font-size:13px;font-family:'DM Sans',sans-serif;margin-top:8px}
+
+/* SHOPPING */
+.who-toggle{display:flex;margin:12px 14px 0;background:var(--ecru);border-radius:10px;padding:3px;gap:3px}
+.who-btn{flex:1;padding:8px;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;background:transparent;color:var(--brn-m)}
+.who-btn.on{background:var(--cream);color:var(--brn);box-shadow:0 1px 6px rgba(0,0,0,.09)}
+.bcard{background:var(--cream);border-radius:14px;margin:10px 14px;padding:16px;box-shadow:var(--shadow)}
+.btop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.bspent{font-size:24px;font-weight:700;color:var(--red)}
+.bof{font-size:13px;color:var(--brn-s)}
+.bin{border:1.5px solid var(--ecru);border-radius:8px;padding:5px 8px;font-size:14px;width:80px;text-align:right;font-family:'DM Sans',sans-serif;color:var(--brn);outline:none;background:#fff}
+.bin:focus{border-color:var(--red-l)}
+.bbar{height:8px;background:var(--ecru);border-radius:6px;overflow:hidden}
+.bfill{height:100%;border-radius:6px;transition:width .3s,background .3s}
+
+.addrow{display:flex;gap:8px;padding:0 14px 10px}
+.addin{flex:1;border:1.5px solid var(--ecru);border-radius:8px;padding:10px 12px;font-size:14px;outline:none;font-family:'DM Sans',sans-serif;color:var(--brn);background:var(--cream)}
+.addin:focus{border-color:var(--red-l)}
+.addgo{background:var(--red);color:#fff;border:none;border-radius:8px;padding:10px 16px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap}
+
+.sitem{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--ecru)}
+.sitem:last-child{border-bottom:none}
+.sck{width:22px;height:22px;border-radius:50%;border:2px solid var(--ecru);background:#fff;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px}
+.sck.on{background:var(--sage);border-color:var(--sage);color:#fff}
+.stxt{flex:1;font-size:14px}
+.stxt.done{text-decoration:line-through;color:var(--brn-s)}
+.sdel{border:none;background:none;color:var(--brn-s);font-size:18px;cursor:pointer;padding:0 4px}
+
+.sub-tabs{display:flex;gap:0;margin:12px 14px 0;background:var(--ecru);border-radius:10px;padding:3px}
+.sub-btn{flex:1;padding:7px;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;background:transparent;color:var(--brn-m);text-align:center}
+.sub-btn.on{background:var(--cream);color:var(--brn);box-shadow:0 1px 6px rgba(0,0,0,.09)}
+
+/* JOURNAL */
+.jcard{background:var(--cream);border-radius:14px;margin:10px 14px;box-shadow:var(--shadow);overflow:hidden}
+.jhead{background:linear-gradient(120deg,var(--blue),var(--blue-l));padding:12px 16px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.jdin{border:none;background:transparent;color:#fff;font-size:12px;font-family:'DM Sans',sans-serif;outline:none;cursor:pointer}
+.jdel{background:rgba(255,255,255,.17);border:none;color:#fff;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:12px}
+.jbody{padding:14px}
+.jtitle{width:100%;border:none;outline:none;font-family:'Playfair Display',serif;font-size:18px;color:var(--brn);background:transparent;margin-bottom:10px}
+.jtitle::placeholder{color:#C0ADA0}
+.jtext{width:100%;border:none;outline:none;resize:none;font-family:'Lora',serif;font-size:14px;line-height:1.75;color:var(--brn);background:transparent;min-height:100px}
+.jtext::placeholder{color:var(--brn-s)}
+
+/* PRIZES */
+.pcard{background:var(--cream);border-radius:12px;margin:0 14px 10px;padding:14px;box-shadow:var(--shadow)}
+.plbl{font-size:11px;color:var(--brn-s);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px}
+.pname{font-weight:600;font-size:14px;margin-bottom:6px}
+.pin{width:100%;border:1.5px solid var(--ecru);border-radius:8px;padding:8px 10px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--brn);background:#fff;outline:none;margin-top:4px}
+.pin:focus{border-color:var(--red-l)}
+
+/* CONTACTS */
+.citem{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--ecru);background:var(--cream)}
+.citem:first-child{border-radius:14px 14px 0 0}
+.citem:last-child{border-bottom:none;border-radius:0 0 14px 14px}
+.cname{font-weight:600;font-size:14px;line-height:1.2}
+.ccity{font-size:12px;color:var(--brn-s);margin-top:2px}
+.cphone{color:var(--red);font-size:14px;font-weight:600;text-decoration:none}
+
+/* MODAL */
+.mover{position:fixed;inset:0;background:rgba(44,26,16,.5);z-index:300;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .25s}
+.mover.op{opacity:1;pointer-events:all}
+.msheet{background:var(--cream);border-radius:20px 20px 0 0;width:100%;max-height:80vh;overflow-y:auto;padding:20px 16px;transform:translateY(100%);transition:transform .3s}
+.mover.op .msheet{transform:translateY(0)}
+.mtitle{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:14px}
+.mopt{padding:12px 0;border-bottom:1px solid var(--ecru);display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.mopt:last-of-type{border-bottom:none}
+.monm{font-size:14px;font-weight:600}
+.moct{font-size:12px;color:var(--brn-s)}
+.madd{background:var(--red);color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:12px;cursor:pointer;flex-shrink:0}
+.mclose{background:var(--ecru);border:none;border-radius:10px;padding:10px;width:100%;margin-top:10px;font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;color:var(--brn)}
+
+.empty{text-align:center;padding:40px 20px;color:var(--brn-s)}
+.empty .ei{font-size:42px;margin-bottom:10px}
+.empty p{font-size:14px;line-height:1.5;font-family:'Lora',serif}
+
+.sec-wrap{background:var(--cream);border-radius:14px;margin:0 14px 12px;box-shadow:var(--shadow);overflow:hidden}
+
+.tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600;margin-right:4px}
+.tag-r{background:#FDECEA;color:var(--red)}
+.tag-g{background:#EAF3E8;color:var(--sage)}
+.tag-h{background:#FDF5E6;color:var(--honey)}
+</style>
+</head>
+<body>
+
+<!-- BOTTOM NAV -->
+<nav class="nav">
+  <button class="nb on" onclick="tab('home')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Home
+  </button>
+  <button class="nb" onclick="tab('stores')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7"/><rect x="5" y="9" width="4" height="12"/><rect x="10" y="9" width="4" height="12"/><rect x="15" y="9" width="4" height="12"/></svg>
+    Stores
+  </button>
+  <button class="nb" onclick="tab('trips')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Trips
+  </button>
+  <button class="nb" onclick="tab('shop')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    Shop
+  </button>
+  <button class="nb" onclick="tab('journal')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+    Journal
+  </button>
+  <button class="nb" onclick="tab('dial')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+    Dial
+  </button>
+</nav>
+
+<!-- HOME SCREEN -->
+<div id="home" class="scr on">
+  <div class="hero">
+    <div class="badge">All Indiana Shop Hop 2026</div>
+    <div class="h-title">Joley & Co.<br>Summer Retreat</div>
+    <div class="h-sub">Cari Jo &amp; Val ✦ May 1 – June 30</div>
+    <div id="countdown-wrap">
+      <div class="cdown-row" id="cdown"></div>
+    </div>
+  </div>
+  <div class="stats3">
+    <div class="sbox"><div class="snum r" id="s-visited">0</div><div class="slbl">Stores<br>Visited</div></div>
+    <div class="sbox"><div class="snum g" id="s-stamped">0</div><div class="slbl">Passports<br>Stamped</div></div>
+    <div class="sbox"><div class="snum b" id="s-wish">0</div><div class="slbl">On the<br>Wishlist</div></div>
+  </div>
+  <div class="prog-card">
+    <div class="prog-lbl"><span>Stamp Progress</span><span id="prog-txt">0 of 67</span></div>
+    <div class="pbar"><div class="pfill" id="prog-fill" style="width:0%"></div></div>
+  </div>
+  <div class="sh">Today's Note</div>
+  <div class="note-card">
+    <div class="note-date" id="today-date"></div>
+    <textarea class="note-ta" id="daily-note" placeholder="How's the adventure going? What are you excited to find today?..." rows="4" oninput="save('daily-note',this.value)"></textarea>
+  </div>
+  <div class="sh">Prize Tracker</div>
+  <div class="sec-wrap" id="prize-list"></div>
+  <div style="padding:0 14px 8px"><button class="addgo" style="width:100%" onclick="addPrize()">+ Log a Prize Entry</button></div>
+</div>
+
+<!-- STORES SCREEN -->
+<div id="stores" class="scr">
+  <div class="shead"><h1>The 67 Stops</h1><p>All Indiana Shop Hop 2026</p></div>
+  <div class="sbox2"><input class="sinput" type="search" placeholder="🔍  Search stores or cities..." oninput="filterStores(this.value)" id="store-search"></div>
+  <div class="fscroll" id="region-filters">
+    <button class="chip on" onclick="setRegion('')">All 67</button>
+    <button class="chip" onclick="setRegion('Amish Country')">Amish Country</button>
+    <button class="chip" onclick="setRegion('North')">North</button>
+    <button class="chip" onclick="setRegion('Northeast')">Northeast</button>
+    <button class="chip" onclick="setRegion('North Central')">N. Central</button>
+    <button class="chip" onclick="setRegion('Central')">Central/Indy</button>
+    <button class="chip" onclick="setRegion('West Central')">W. Central</button>
+    <button class="chip" onclick="setRegion('East Central')">E. Central</button>
+    <button class="chip" onclick="setRegion('South Central')">S. Central</button>
+    <button class="chip" onclick="setRegion('Southwest')">Southwest</button>
+    <button class="chip" onclick="setRegion('Southeast')">Southeast</button>
+    <button class="chip" onclick="setRegion('__visited')">✓ Visited</button>
+    <button class="chip" onclick="setRegion('__wish')">★ Wishlist</button>
+    <button class="chip" onclick="setRegion('__must')">🔖 Must Return</button>
+  </div>
+  <div class="swrap" id="store-list"></div>
+</div>
+
+<!-- TRIPS SCREEN -->
+<div id="trips" class="scr">
+  <div class="shead"><h1>Day Trips</h1><p>Plan your routes & stops</p></div>
+  <div id="trips-list"></div>
+  <div class="empty" id="trips-empty" style="display:none">
+    <div class="ei">🗺️</div>
+    <p>No trips yet! Tap + to plan your first day of hopping.</p>
+  </div>
+  <button class="fab" onclick="addTrip()">+</button>
+</div>
+
+<!-- SHOPPING SCREEN -->
+<div id="shop" class="scr">
+  <div class="shead"><h1>Shopping</h1><p>Lists, budget & finds</p></div>
+  <div class="sub-tabs">
+    <button class="sub-btn on" onclick="shopTab('list')">🧺 Lists</button>
+    <button class="sub-btn" onclick="shopTab('fabric')">🧵 Fabric</button>
+    <button class="sub-btn" onclick="shopTab('gifts')">🎁 Gifts</button>
+  </div>
+
+  <!-- LISTS TAB -->
+  <div id="shop-list" class="shop-section">
+    <div class="who-toggle">
+      <button class="who-btn on" onclick="setWho('cari')">Cari Jo</button>
+      <button class="who-btn" onclick="setWho('val')">Val</button>
+    </div>
+    <div class="bcard" id="budget-card">
+      <div class="btop">
+        <div><div class="bspent" id="bspent">$0</div><div class="bof">spent</div></div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <span style="font-size:13px;color:var(--brn-s)">Budget: $</span>
+          <input class="bin" type="number" id="budget-input" placeholder="0" oninput="saveBudget(this.value)" min="0">
+        </div>
+      </div>
+      <div class="bbar"><div class="bfill" id="bfill" style="width:0%;background:var(--sage)"></div></div>
+    </div>
+    <div class="addrow">
+      <input class="addin" type="text" id="add-item-in" placeholder="Add item to look for..." onkeydown="if(event.key==='Enter')addItem()">
+      <button class="addgo" onclick="addItem()">Add</button>
+    </div>
+    <div class="sec-wrap" id="items-list"></div>
+  </div>
+
+  <!-- FABRIC TAB -->
+  <div id="shop-fabric" class="shop-section" style="display:none">
+    <div class="sh" style="padding-top:14px">Fabric Wishlist</div>
+    <div class="addrow">
+      <input class="addin" type="text" id="fab-in" placeholder="Project name or fabric description..." onkeydown="if(event.key==='Enter')addFabric()">
+      <button class="addgo" onclick="addFabric()">Add</button>
+    </div>
+    <div class="sec-wrap" id="fabric-list"></div>
+  </div>
+
+  <!-- GIFTS TAB -->
+  <div id="shop-gifts" class="shop-section" style="display:none">
+    <div class="sh" style="padding-top:14px">Gift List</div>
+    <div class="addrow">
+      <input class="addin" type="text" id="gift-in" placeholder="Gift idea + who it's for..." onkeydown="if(event.key==='Enter')addGift()">
+      <button class="addgo" onclick="addGift()">Add</button>
+    </div>
+    <div class="sec-wrap" id="gift-list"></div>
+  </div>
+</div>
+
+<!-- JOURNAL SCREEN -->
+<div id="journal" class="scr">
+  <div class="shead"><h1>Trail Journal</h1><p>Cari Jo &amp; Val's adventures</p></div>
+  <div id="journal-list"></div>
+  <div class="empty" id="journal-empty" style="display:none">
+    <div class="ei">📖</div>
+    <p>Start writing! Every good adventure deserves a record.</p>
+  </div>
+  <button class="fab" onclick="addJournal()">+</button>
+</div>
+
+<!-- DIAL SCREEN -->
+<div id="dial" class="scr">
+  <div class="shead"><h1>Quick Dial</h1><p>All 67 store numbers — one tap to call</p></div>
+  <div style="margin:12px 14px 0">
+    <input class="sinput" type="search" placeholder="🔍  Search stores..." oninput="filterDial(this.value)" id="dial-search">
+  </div>
+  <div style="margin:10px 14px 0;background:var(--cream);border-radius:14px;box-shadow:var(--shadow);overflow:hidden" id="dial-list"></div>
+</div>
+
+<!-- MODAL for adding stores to trip -->
+<div class="mover" id="trip-modal" onclick="if(event.target===this)closeModal()">
+  <div class="msheet">
+    <div class="mtitle">Add a Stop</div>
+    <div id="modal-stores"></div>
+    <button class="mclose" onclick="closeModal()">Cancel</button>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════
+// STORE DATA — all 67 participating shops
+// ════════════════════════════════════════════════════════════
+const STORES = [
+// Amish Country
+{id:1,name:"Fabric Utopia",addr:"3016 W Wilden Ave",city:"Goshen",zip:"46528",phone:"574-307-0583",web:"https://www.fabricutopia.com",region:"Amish Country",note:"",sweet:{name:"Olympia Candy Kitchen",type:"🍬 Candy Shop",tip:"Greek-immigrant family has hand-dipped chocolates since 1912. Over 100 years of toffee, caramels, and chocolate-covered everything."}},
+{id:2,name:"Calico Point",addr:"24856 County Rd 40",city:"Goshen",zip:"46526",phone:"574-862-4065",web:"http://www.calicopoint.com",region:"Amish Country",note:"",sweet:{name:"The Chief Ice Cream",type:"🍦 Ice Cream",tip:"Named Indiana's best by Visit Indiana. The line gets long — arrive early. Every flavor is packed with fresh ingredients."}},
+{id:3,name:"Heartland Country Sewing",addr:"25630 County Rd 36",city:"Goshen",zip:"46526",phone:"574-862-4406",web:"",region:"Amish Country",note:"",sweet:{name:"Olympia Candy Kitchen",type:"🍬 Candy Shop",tip:"Greek-immigrant family has hand-dipped chocolates since 1912. Over 100 years of toffee, caramels, and chocolate-covered everything."}},
+{id:4,name:"Lolly's Fabrics",addr:"225 N Harrison St",city:"Shipshewana",zip:"46565",phone:"260-768-4703",web:"https://www.lollys.com",region:"Amish Country",note:"",sweet:{name:"Blue Gate Bakery",type:"🥧 Amish Bakery",tip:"20+ year-round pies, Amish peanut butter spread, hand-dipped chocolates, and the famous pecan crunch. A must."}},
+{id:5,name:"Cuddle Corner",addr:"225 N Harrison St",city:"Shipshewana",zip:"46565",phone:"260-768-4504",web:"https://www.lollys.com",region:"Amish Country",note:"",sweet:{name:"Shawna Rae's Bakery & Café",type:"🧁 Bakery/Café",tip:"80+ cupcake flavors and 35 cheesecake varieties. A different selection weekly. Come very hungry."}},
+{id:6,name:"I Sell Fabric",addr:"5520 N State Rd 5",city:"Shipshewana",zip:"46565",phone:"260-499-1110",web:"",region:"Amish Country",note:"",sweet:{name:"Aunt Millie's Candy & Nuts",type:"🍬 Candy",tip:"Shipshewana fudge, saltwater taffy, German roasted nuts, Jelly Belly, caramels. Inside Davis Mercantile — the sweetest stop in town."}},
+{id:7,name:"Yoder Department Store",addr:"300 S Van Buren St",city:"Shipshewana",zip:"46565",phone:"260-768-4887",web:"https://yoderdepartmentstore.com",region:"Amish Country",note:"",sweet:{name:"Naomi's Candies at Yoder's",type:"🍬 Candy",tip:"Right inside Yoder's — Amish-made cinnamon rolls and an entire case of handmade sweets. Grab coffee to go with them."}},
+{id:8,name:"The Quilt Shop at Essenhaus",addr:"240 US Hwy 20",city:"Middlebury",zip:"46540",phone:"800-455-9471 x9435",web:"https://www.essenhausquiltshop.com",region:"Amish Country",note:"",sweet:{name:"Das Dutchman Essenhaus Bakery",type:"🥧 Bakery/Pie",tip:"30+ pie varieties, fresh donuts with the icing still settling in. Attached to the largest restaurant in Indiana — stay for pie."}},
+{id:9,name:"Clothesline Creations",addr:"424 N Main St, Ste 1A",city:"Middlebury",zip:"46540",phone:"574-825-7555",web:"https://www.clotheslinecreations.com",region:"Amish Country",note:"",sweet:{name:"Rise'n Roll Bakery",type:"🍩 Donut Shop",tip:"The original Middlebury location — locals call these donuts 'Amish Crack' for a reason. Cinnamon caramel is the move. The apple fritter is a close second."}},
+{id:10,name:"Heritage Fabrics & General Store",addr:"25350 County Rd 52",city:"Nappanee",zip:"46550",phone:"574-773-2445",web:"https://heritagefabricsandgeneralstore.com",region:"Amish Country",note:"",sweet:{name:"Nappanee's Bakery & Treat Shoppe",type:"🧁 Bakery",tip:"Lots of locally loved baked goods, plus Rocket Science Ice Cream is close by for a scoop after."}},
+// North
+{id:11,name:"Stitch N Time Fabrics",addr:"2305 Miami St",city:"South Bend",zip:"46614",phone:"574-234-4314",web:"https://www.stitchntimefabrics.com",region:"North",note:"",sweet:{name:"South Bend Chocolate Company",type:"🍫 Chocolate Factory",tip:"500+ chocolates and sweets, plus a full factory tour. Got its start making chocolates under a Notre Dame license. A genuine Hoosier icon."}},
+{id:12,name:"Stone Soup Batiks",addr:"1355 N Bendix Dr",city:"South Bend",zip:"46628",phone:"574-400-0258",web:"https://www.stonesoupbatikssb.com/",region:"North",note:"",sweet:{name:"Macri's Italian Bakery",type:"🍰 Italian Bakery",tip:"The carrot cake has a cult following. Cannoli, amaretti cookies, macaroons — authentic Italian desserts. Worth every bite."}},
+{id:13,name:"Sew Unique by Jackie",addr:"51095 Bittersweet Rd",city:"Granger",zip:"46530",phone:"574-271-1775",web:"https://sewuniquebyjackie.com",region:"North",note:"",sweet:{name:"Ragamuffin Bakery + Coffee",type:"🧁 Bakery",tip:"South Bend area gem. Scratch-made cinnamon rolls, specialty lattes, and baked goods that sell out fast on weekends."}},
+{id:14,name:"Angola Quilt Shop & Retreat",addr:"206 W Maumee St",city:"Angola",zip:"46703",phone:"260-668-3888",web:"https://angolaquiltshop.com",region:"North",note:"",sweet:{name:"Ask the shop! They always know.",type:"🗺️ Local Secret",tip:"Small towns hold the best surprises. The folks at Angola Quilt Shop will point you to the right local sweet spot."}},
+{id:15,name:"Caroline's Cottage Cottons",addr:"195 Weston St",city:"Rome City",zip:"46784",phone:"260-854-3900",web:"https://carolinescottagecottons.com",region:"North",note:"",sweet:{name:"Ask Caroline's crew!",type:"🗺️ Local Secret",tip:"Rome City is a lake town charmer. Ask the shop for the best nearby ice cream or bakery — they'll know exactly where to send you."}},
+// Northeast
+{id:16,name:"Edwards Sewing Center",addr:"6131 Rothman Rd",city:"Fort Wayne",zip:"46835",phone:"260-486-3003",web:"https://www.edwardssewing.com",region:"Northeast",note:"",sweet:{name:"DeBrand Fine Chocolates",type:"🍫 Artisan Chocolate",tip:"Celebrity-favorite since forever. Artisan truffles, handmade peanut butter cups, gourmet caramel apples. Get a box. You deserve it."}},
+{id:17,name:"Quilts N Gifts",addr:"2020 N Main St, Ste A",city:"Bluffton",zip:"46714",phone:"260-565-4438",web:"https://www.quiltsngifts.net",region:"Northeast",note:"",sweet:{name:"J. Edwards Fine Chocolates",type:"🍫 Chocolate & Cake",tip:"Over 30 custom cakes made fresh daily, plus Kokomo-area chocolates. Worth the drive for a slice."}},
+{id:18,name:"Red Barn Quiltery",addr:"15108 Lortie Rd",city:"Monroeville",zip:"46773",phone:"260-466-4328",web:"",region:"Northeast",note:"",sweet:{name:"Ask the locals!",type:"🗺️ Local Secret",tip:"Monroeville is a small one — ask at the Red Barn Quiltery for the closest bakery or diner. Road trip hospitality at its finest."}},
+{id:19,name:"Zinck's Fabric Outlet",addr:"1444 Lincolnway S",city:"Ligonier",zip:"46767",phone:"260-894-3000",web:"https://zincksfabric.com/index.html",region:"Northeast",note:"",sweet:{name:"Ask at Zinck's!",type:"🗺️ Local Secret",tip:"Ligonier is small but mighty. The shop staff will have opinions about where to grab something sweet nearby."}},
+{id:20,name:"Nancy J's Fabrics",addr:"1604 S Wabash St",city:"Wabash",zip:"46992",phone:"260-563-3505",web:"https://www.nancyjsfabrics.com",region:"Northeast",note:"",sweet:{name:"Ask the shop!",type:"🗺️ Local Secret",tip:"Wabash is a historic river town with character. Ask the Nancy J's team what's good nearby — they know their town."}},
+// North Central
+{id:21,name:"Lowery Sewing and Vacuum",addr:"707 E Winona Ave",city:"Warsaw",zip:"46580",phone:"574-267-8631",web:"https://www.lowerysewing.com",region:"North Central",note:"",sweet:{name:"Bakehouse 23",type:"🧁 Bakery",tip:"Small-batch scratch baking — worth finding. Also check out Betty's Cake & Candy Shop for handmade candies and custom treats."}},
+{id:22,name:"Color Wheel Quilt Shop",addr:"200 N Michigan St",city:"Plymouth",zip:"46563",phone:"574-313-0777",web:"",region:"North Central",note:"",sweet:{name:"Local diner or ask the shop!",type:"🗺️ Local Secret",tip:"Plymouth is the heart of Marshall County — ask at Color Wheel for the local sweet spot. Small Indiana towns always have a pie place."}},
+{id:23,name:"The Quilted Bee & Bee Hive Sewing Center",addr:"620 N Main St",city:"Monticello",zip:"47960",phone:"574-297-5418",web:"https://www.thequiltedbee21.com",region:"North Central",note:"",sweet:{name:"Ask the Quilted Bee crew!",type:"🗺️ Local Secret",tip:"White County lake country — ask the shop. There are seasonal ice cream spots near the lakes that locals love."}},
+{id:24,name:"The Scarlet Thread Quilt Co.",addr:"1974 E 1000 S",city:"Twelve Mile",zip:"46988",phone:"574-721-5899",web:"https://www.scarletthreadquiltco.com",region:"North Central",note:"⚠️ GPS TIP: Search the shop NAME — not the address.",sweet:{name:"Pack your own snacks for this one!",type:"🗺️ Local Adventure",tip:"Twelve Mile is tiny and remote — which is exactly what makes finding it so fun. Pack something from a previous stop or ask the shop."}},
+{id:25,name:"SEW Crazy! Quilts LLC",addr:"730 Burlington Ave",city:"Logansport",zip:"46947",phone:"574-398-4834",web:"https://www.sewcrazyquilt.com",region:"North Central",note:"",sweet:{name:"Kuns Bakery",type:"🧁 Bakery",tip:"A Logansport institution for baked goods. Also check out the Ice Cream & Candy Shoppe for a cone."}},
+{id:26,name:"Misty Meadows Country Store",addr:"6120 N Old US Hwy 31",city:"Rochester",zip:"46975",phone:"574-223-6120",web:"https://www.mistymmeadowscountrystore.com",region:"North Central",note:"",sweet:{name:"Ask the Misty Meadows team!",type:"🗺️ Local Secret",tip:"Fulton County small-town charm. The store itself might have some treats, and the staff will know the local favorite."}},
+{id:27,name:"Grandma N Me Quiltin",addr:"803 W Water St",city:"Portland",zip:"47371",phone:"260-726-2717",web:"",region:"North Central",note:"",sweet:{name:"Ask at the shop!",type:"🗺️ Local Secret",tip:"Portland is a Jay County gem. Ask Grandma N Me — a shop with that name definitely knows where to get good pie."}},
+{id:28,name:"Rossville Quilts",addr:"356 W Main St",city:"Rossville",zip:"46065",phone:"765-379-2900",web:"https://rossvillequilts.com",region:"North Central",note:"",sweet:{name:"Sweet adventure ahead!",type:"🗺️ Local Secret",tip:"Rossville is small — the Quilts shop staff will know if there's a local favorite bakery or diner nearby."}},
+// Central/Indy
+{id:29,name:"Always In Stitches",addr:"1808 Conner St",city:"Noblesville",zip:"46060",phone:"317-776-4227",web:"https://www.alwaysinstitches1.com",region:"Central",note:"",sweet:{name:"Alexander's Ice Cream",type:"🍦 Soda Fountain",tip:"Downtown Noblesville icon with old-fashioned soda shop vibes and thick fluted glassware. Milkshakes require a spoon. Sherbet Freeze tastes like a dream."}},
+{id:30,name:"Zig-Zag Corner Quilts",addr:"7872 N Troy Rd",city:"Greenfield",zip:"46140",phone:"317-326-3115",web:"https://www.zigzagcorner.com",region:"Central",note:"",sweet:{name:"Local bakery — ask the shop!",type:"🗺️ Local Secret",tip:"Greenfield is James Whitcomb Riley's hometown. Check for local bakeries or a hometown diner for pie."}},
+{id:31,name:"The Crinkled Cleat",addr:"4588 S 200 E",city:"Atlanta",zip:"46031",phone:"317-402-3422",web:"",region:"Central",note:"",sweet:{name:"Alexander's Ice Cream (Noblesville)",type:"🍦 Soda Fountain",tip:"Just a quick drive from Atlanta. Alexander's old-school soda shop in Noblesville is worth the small detour."}},
+{id:32,name:"Back Door Quilts",addr:"2503 Fairview Pl, Ste W",city:"Greenwood",zip:"46142",phone:"317-882-2120",web:"https://backdoorquilts.com",region:"Central",note:"",sweet:{name:"Andy's Frozen Custard (nearby Franklin)",type:"🍦 Frozen Custard",tip:"Head to Franklin for Andy's — creamy frozen custard and Italian Ice, a local favorite for decades."}},
+{id:33,name:"Sewing & Vacuum Authority – Greenwood",addr:"1035 N St Rd 135",city:"Greenwood",zip:"46142",phone:"317-882-6672",web:"https://vacauthority.com",region:"Central",note:"",sweet:{name:"Andy's Frozen Custard (nearby Franklin)",type:"🍦 Frozen Custard",tip:"Head to Franklin for creamy frozen custard and Italian Ice. Worth a short detour after your stitching stop."}},
+{id:34,name:"Love It Sew",addr:"7400 Business Center Dr",city:"Avon",zip:"46123",phone:"463-202-6750",web:"https://www.loveitsewshop.com",region:"Central",note:"",sweet:{name:"Frost Bite Ice Cream",type:"🍦 Ice Cream",tip:"30+ years serving Avon. The 'Frosts' blend candy bar bits, cookie dough, and other mix-ins into soft serve. Classic car cruise-ins on Thursday nights in summer!"}},
+{id:35,name:"Quilt Quarters",addr:"9504 Haver Way",city:"Indianapolis",zip:"46240",phone:"317-757-8340",web:"https://quiltquarters.com",region:"Central",note:"⚠️ No Shop Hop Sunday hours",sweet:{name:"Amelia's Bakery",type:"🥐 Artisan Bakery",tip:"One of Indiana's finest — fresh sourdough, pastries, local meats and cheeses. Multiple Indy locations. The Stutz Building location is special."}},
+{id:36,name:"Crimson Tate",addr:"845 Massachusetts Ave, Ste A",city:"Indianapolis",zip:"46204",phone:"317-426-3300",web:"https://www.crimsontate.com",region:"Central",note:"",sweet:{name:"Lick Ice Cream at The Garage",type:"🍦 Artisan Ice Cream",tip:"Wild, inventive flavors like Rosemary Olive Oil and Cedar & Whiskey. Located in The Garage Food Hall. Line runs long on weekends. Worth every minute."}},
+{id:37,name:"The French Seam",addr:"9335 Castlegate Dr",city:"Indianapolis",zip:"46256",phone:"317-841-1810",web:"https://www.thefrenchseam.com",region:"Central",note:"",sweet:{name:"Amelia's Bakery",type:"🥐 Artisan Bakery",tip:"One of Indiana's finest — fresh sourdough, pastries, local meats and cheeses. Multiple Indy locations. The Stutz Building location is special."}},
+{id:38,name:"Select Sewing",addr:"2415 E 65th St",city:"Indianapolis",zip:"46220",phone:"317-255-6332",web:"https://www.selectsewingservice.com",region:"Central",note:"",sweet:{name:"Lick Ice Cream at The Garage",type:"🍦 Artisan Ice Cream",tip:"Inventive flavors unlike anything you've tried. Located in The Garage Food Hall on the near east side. Totally worth it."}},
+// West Central
+{id:39,name:"The Quilters Garden Shop",addr:"405 Sagamore Pkwy S, Ste B15",city:"Lafayette",zip:"47905",phone:"765-463-6550",web:"https://quiltersgardenshop.com",region:"West Central",note:"",sweet:{name:"Sweet Revolution Bake Shop",type:"🥧 Pie & Pastry",tip:"Family-owned in historic downtown Lafayette. From-scratch pies and pastries with natural ingredients. The dirty pudding cheesecake will haunt you in the best way."}},
+{id:40,name:"Rossville Quilts",addr:"356 W Main St",city:"Rossville",zip:"46065",phone:"765-379-2900",web:"https://rossvillequilts.com",region:"West Central",note:"",sweet:{name:"Scones & Doilies (Lafayette)",type:"🥐 Bakery",tip:"A short hop to Lafayette for the best croissants in the area. Also try O'Rears Pastry Shop for fresh-baked pastries in downtown Lafayette."}},
+{id:41,name:"Quilts Plus",addr:"212 W Main St",city:"Lebanon",zip:"46052",phone:"317-506-7527",web:"https://www.quiltsplus.com",region:"West Central",note:"",sweet:{name:"Local bakery or diner!",type:"🗺️ Local Secret",tip:"Lebanon is a charming Boone County seat. Poke around downtown — there's usually a hometown bakery tucked in near the courthouse square."}},
+{id:42,name:"Patchwork & Purl",addr:"15 W Franklin St",city:"Greencastle",zip:"46135",phone:"765-301-9091",web:"https://www.patchworkandpurl.com",region:"West Central",note:"",sweet:{name:"Ask at the shop!",type:"🗺️ Local Secret",tip:"Greencastle is a DePauw University town with some character. The Patchwork crew will know where the good stuff is."}},
+{id:43,name:"Crawfordsville Sew & Vac",addr:"1774 S US Hwy 231, Ste 1",city:"Crawfordsville",zip:"47933",phone:"765-307-3187",web:"https://www.cvillesewvac.com",region:"West Central",note:"",sweet:{name:"Ask at Crawfordsville Sew & Vac!",type:"🗺️ Local Secret",tip:"Crawfordsville is a Montgomery County gem with a real downtown. Ask the shop for a local pie or bakery recommendation."}},
+{id:44,name:"Wabash Valley Fabrics",addr:"1347 Wabash Ave",city:"Terre Haute",zip:"47807",phone:"812-232-0727",web:"https://www.wabashvalleyfabrics.com",region:"West Central",note:"",sweet:{name:"Marilyn's Bakery at Johnson's Farm",type:"🥧 Farm Bakery",tip:"You have not lived until you've had their fresh strawberry pie — peak-season berries, straight from the farm. Around since 1986. Also: kolaches, cinnamon rolls, toffee."}},
+// East Central
+{id:45,name:"Nancy's Fancys Sewing Corner",addr:"1446 NW 5th St",city:"Richmond",zip:"47374",phone:"765-939-0465",web:"https://nancysfancyssewingcorner.com",region:"East Central",note:"",sweet:{name:"Dougherty Orchards",type:"🍎 Farm Bakery",tip:"Indiana's oldest family orchard — open since 1883, 138 years of apple growing. Try the donut sundae. Also nearby: the hilariously wonderful Uranus Fudge Factory off I-70 (yes, really — great fudge)."}},
+{id:46,name:"Just Quilts LLC",addr:"136 W State St",city:"Albany",zip:"47320",phone:"765-789-3008",web:"https://www.justquiltsllc.com",region:"East Central",note:"",sweet:{name:"Ask at Just Quilts!",type:"🗺️ Local Secret",tip:"Albany is a small Delaware County town. The shop staff are your best guide to what's sweet and local nearby."}},
+{id:47,name:"Mystic Fabrics",addr:"1147½ W 3rd St",city:"Rushville",zip:"46173",phone:"765-561-1115",web:"https://www.mysticfabrics.com",region:"East Central",note:"",sweet:{name:"Ask the shop!",type:"🗺️ Local Secret",tip:"Rushville is the Rush County seat — there's a good chance there's a hometown diner or bakery nearby. The Mystic crew will know."}},
+// South Central
+{id:48,name:"Klaiber's Sewing Center",addr:"617 W 17th St",city:"Bloomington",zip:"47404",phone:"812-336-0487",web:"https://klaiberssewing.com",region:"South Central",note:"",sweet:{name:"Parlor Doughnuts",type:"🍩 Donut Shop",tip:"Layered donuts in flavors you didn't know you needed — coconut cream, strawberry shortcake, carnival. Three Bloomington locations. Bring napkins."}},
+{id:49,name:"University of Sewing",addr:"611 W 11th St, Ste 2",city:"Bloomington",zip:"47404",phone:"812-323-2665",web:"https://www.universityofsewing.com",region:"South Central",note:"",sweet:{name:"Two Sticks Bakery",type:"🧁 Artisan Bakery",tip:"Women-owned, from scratch, sells out daily. Morning pastries, hand pies, cookies, cake by the slice. Arrive early or go home empty-handed."}},
+{id:50,name:"Unraveled Quilt Store",addr:"381 Fletcher Ave",city:"Spencer",zip:"47460",phone:"812-821-0309",web:"https://www.unraveledquiltstore.com",region:"South Central",note:"",sweet:{name:"Ask at the shop!",type:"🗺️ Local Secret",tip:"Owen County small-town adventure. Ask the Unraveled team for a local bakery tip — quilt shop owners always know the best spots."}},
+{id:51,name:"Indiana Quilt Depot",addr:"7966 State Rd 37",city:"Bedford",zip:"47421",phone:"812-275-7400",web:"https://www.indianaquiltdepot.com",region:"South Central",note:"",sweet:{name:"Ask at Indiana Quilt Depot!",type:"🗺️ Local Secret",tip:"Lawrence County limestone country. The Quilt Depot crew will have the local scoop on where to get something sweet."}},
+{id:52,name:"Wagler's Quilts & Crafts",addr:"4413 E 200N",city:"Montgomery",zip:"47558",phone:"812-486-3836",web:"",region:"South Central",note:"",sweet:{name:"Quilted Peace neighbors (Jasper nearby)",type:"🗺️ Local Secret",tip:"Montgomery is small — head to Jasper (20 min) for Martinez Cakes' fresh Chocoflan or The Sugar Shack for donuts locals swear by."}},
+// Southwest
+{id:53,name:"Let's Sew",addr:"4406 E Morgan Ave",city:"Evansville",zip:"47715",phone:"812-471-7945",web:"https://www.letssew.com",region:"Southwest",note:"",sweet:{name:"Grannie's Secret Homemade Desserts",type:"🥧 Desserts",tip:"A farmers market legend gone permanent. The mini coconut cream pie is 'the best in a decade' — so good it reportedly reminded someone of their grandmother's recipe."}},
+{id:54,name:"Bernina of Evansville",addr:"4844 Plaza East Blvd",city:"Evansville",zip:"47715",phone:"812-476-6114",web:"https://www.berninaofevansville.com",region:"Southwest",note:"",sweet:{name:"Donut Bank",type:"🍩 Donut Shop",tip:"An Evansville institution. Locals go here for their doughnut fix — reliably delicious and deeply Hoosier."}},
+{id:55,name:"Quilted Peace",addr:"613 Main St",city:"Jasper",zip:"47546",phone:"812-631-5021",web:"https://www.quiltedpeace.com",region:"Southwest",note:"",sweet:{name:"Martinez Cakes",type:"🎂 Custom Cakes",tip:"Handmade Chocoflan, Tres Leches, cupcakes — baked fresh daily in Jasper, never frozen. The Chocoflan is chocolate cake meets silky flan and it is magic."}},
+{id:56,name:"The Village Mercantile",addr:"123 S 2nd St",city:"Boonville",zip:"47601",phone:"812-897-5687",web:"https://www.villagemercantile.com",region:"Southwest",note:"",sweet:{name:"Ask the Village Mercantile!",type:"🗺️ Local Secret",tip:"Boonville has a charming courthouse square. The Mercantile team will know the best local sweet spot — they're embedded in the community."}},
+{id:57,name:"Thyme to Sew",addr:"301 W Main St",city:"Odon",zip:"47562",phone:"812-790-0855",web:"",region:"Southwest",note:"",sweet:{name:"Explore the small town!",type:"🗺️ Local Secret",tip:"Odon is a tiny Daviess County town — check the local grocery bakery or ask Thyme to Sew. Sometimes the best treats are the unexpected ones."}},
+{id:58,name:"The Stitching Post",addr:"401 E Main St",city:"Washington",zip:"47501",phone:"812-254-6063",web:"https://www.stitchingpostquilts.com",region:"Southwest",note:"",sweet:{name:"Ask at the Stitching Post!",type:"🗺️ Local Secret",tip:"Washington is the Daviess County seat with some real Main Street character. The Stitching Post crew will point you toward the local bakery."}},
+// Southeast
+{id:59,name:"The Quilting Bee Quilt Shop",addr:"4904 Old Georgetown Rd",city:"Georgetown",zip:"47122",phone:"812-542-1236",web:"https://thequiltingbeeshop.com",region:"Southeast",note:"",sweet:{name:"Louisville-area options nearby!",type:"🗺️ Local Secret",tip:"Georgetown sits right near the Louisville metro — you'll have great options nearby. Ask the Quilting Bee for their favorites just across the river."}},
+{id:60,name:"Sewing & Vacuum Authority – Clarksville",addr:"914 Eastern Blvd, Ste 200",city:"Clarksville",zip:"47129",phone:"812-283-8424",web:"https://vacauthority.com",region:"Southeast",note:"",sweet:{name:"Louisville-area bakeries nearby!",type:"🗺️ Local Secret",tip:"Clarksville is right across from Louisville, KY — you have the full Louisville bakery scene at your fingertips. Ask the shop for a local Jeffersonville or Clarksville favorite."}},
+{id:61,name:"Little Golden Fox",addr:"602 W Main St",city:"Madison",zip:"47250",phone:"812-274-1080",web:"https://www.thelittlegoldenfox.com",region:"Southeast",note:"",sweet:{name:"Horst's Little Bakery Haus",type:"🥐 German Bakery",tip:"German-style pastries in a charming setting. Tender croissants people drive to Madison specifically for. The lemony brownie is moist and chewy."}},
+{id:62,name:"L and L Yard Goods",addr:"1814 Taylor St",city:"Madison",zip:"47250",phone:"812-273-1041",web:"https://www.landlyardgoods.com",region:"Southeast",note:"",sweet:{name:"Sallie's Small Batch Ice Cream",type:"🍦 Ice Cream",tip:"Small batch, big flavor. Madison is a gorgeous Ohio River town — get a scoop and walk the historic district after your shop hop."}},
+{id:63,name:"The Quilter's Nook",addr:"82 Hill St",city:"Versailles",zip:"47042",phone:"812-689-0980",web:"https://thequiltersnook.com",region:"Southeast",note:"",sweet:{name:"Ask at The Quilter's Nook!",type:"🗺️ Local Secret",tip:"Versailles is the Ripley County seat with a classic courthouse square. Ask the Nook for a local bakery or diner recommendation — small courthouses always have great pie nearby."}},
+{id:64,name:"Scrappy Patches Quilt Shop",addr:"408 W Spring St",city:"Brownstown",zip:"47220",phone:"812-358-1734",web:"https://www.scrappypatchesquiltshop.com",region:"Southeast",note:"",sweet:{name:"Ask at Scrappy Patches!",type:"🗺️ Local Secret",tip:"Jackson County small town. The Scrappy Patches team will know the local sweet spot — check for local diners or a Main Street bakery."}},
+{id:65,name:"Tree City Stitches Quilt Shop",addr:"125 E Main St",city:"Greensburg",zip:"47240",phone:"812-222-0920",web:"https://www.tcstitches.com",region:"Southeast",note:"",sweet:{name:"Local downtown options!",type:"🗺️ Local Secret",tip:"Greensburg has a tree growing out of its courthouse tower — a town this charming probably has good pie too. Ask at Tree City Stitches."}},
+{id:66,name:"Pohlar Fabrics",addr:"941 W Coe Rd",city:"Liberty",zip:"47353",phone:"765-458-5466",web:"https://www.pohlarfabrics.com",region:"Southeast",note:"",sweet:{name:"Ask at Pohlar Fabrics!",type:"🗺️ Local Secret",tip:"Union County is small but sweet. The Pohlar team has been part of this community for years — they'll know where to send you for a treat."}},
+// Munster/NW Indiana
+{id:67,name:"Bee Quilting & Such",addr:"1842 45th St, Ste B",city:"Munster",zip:"46321",phone:"219-237-2076",web:"https://www.beequilting.com",region:"Northwest",note:"",sweet:{name:"Parlor Doughnuts – Munster",type:"🍩 Donut Shop",tip:"Original layered donuts with wild flavors — vegan and gluten-friendly options too. Also Fair Oaks Farms is nearby for the freshest, creamiest farm ice cream in Indiana."}}
+];
+
+// ════════════════════════════════════════════════════════════
+// LOCAL STORAGE — all persistence lives here
+// ════════════════════════════════════════════════════════════
+function save(k,v){try{localStorage.setItem('jc_'+k,JSON.stringify(v))}catch(e){}}
+function load(k,def){try{const v=localStorage.getItem('jc_'+k);return v!==null?JSON.parse(v):def}catch(e){return def}}
+
+// Per-store data
+function storeData(id){return load('st_'+id,{visited:false,wish:false,must:false,stamp:false,gift:false,fabric:false,rating:0,note:'',hours:'',spend:0})}
+function saveStore(id,d){save('st_'+id,d)}
+
+// ════════════════════════════════════════════════════════════
+// TAB ROUTING
+// ════════════════════════════════════════════════════════════
+function tab(id){
+  document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('.nb')[['home','stores','trips','shop','journal','dial'].indexOf(id)].classList.add('on');
+  if(id==='home')updateHome();
+  if(id==='stores')renderStores();
+  if(id==='trips')renderTrips();
+  if(id==='journal')renderJournal();
+  if(id==='dial')renderDial();
+  if(id==='home')renderPrizes();
+}
+
+// ════════════════════════════════════════════════════════════
+// HOME
+// ════════════════════════════════════════════════════════════
+function updateHome(){
+  // Countdown
+  const now=new Date();
+  const start=new Date('2026-05-01T00:00:00');
+  const end=new Date('2026-06-30T23:59:59');
+  const cw=document.getElementById('countdown-wrap');
+  const cd=document.getElementById('cdown');
+  if(now>=start&&now<=end){
+    cw.innerHTML='<div class="event-live">🎉 The Shop Hop is LIVE! Happy hopping, Joley & Co.!</div>';
+  } else if(now<start){
+    const diff=start-now;
+    const d=Math.floor(diff/86400000);
+    const h=Math.floor((diff%86400000)/3600000);
+    const m=Math.floor((diff%3600000)/60000);
+    const s=Math.floor((diff%60000)/1000);
+    cd.innerHTML=`<div class="cbox"><div class="cnum">${d}</div><div class="clbl">Days</div></div><div class="cbox"><div class="cnum">${h}</div><div class="clbl">Hours</div></div><div class="cbox"><div class="cnum">${m}</div><div class="clbl">Mins</div></div><div class="cbox"><div class="cnum">${s}</div><div class="clbl">Secs</div></div>`;
+  } else {
+    cw.innerHTML='<div class="event-live">The 2026 Shop Hop has ended. What an adventure! 🧵</div>';
+  }
+  // Stats
+  let visited=0,stamped=0,wish=0;
+  STORES.forEach(s=>{const d=storeData(s.id);if(d.visited)visited++;if(d.stamp)stamped++;if(d.wish)wish++;});
+  document.getElementById('s-visited').textContent=visited;
+  document.getElementById('s-stamped').textContent=stamped;
+  document.getElementById('s-wish').textContent=wish;
+  document.getElementById('prog-txt').textContent=`${stamped} of 67`;
+  document.getElementById('prog-fill').style.width=(stamped/67*100)+'%';
+  // Daily note
+  const dn=document.getElementById('daily-note');
+  dn.value=load('daily-note','');
+  const now2=new Date();
+  document.getElementById('today-date').textContent=now2.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  // Countdown ticker
+  if(now<start)setTimeout(updateHome,1000);
+}
+
+// ════════════════════════════════════════════════════════════
+// PRIZES (on Home screen)
+// ════════════════════════════════════════════════════════════
+function renderPrizes(){
+  const prizes=load('prizes',[]);
+  const el=document.getElementById('prize-list');
+  if(!prizes.length){el.innerHTML='<div class="empty"><div class="ei">🏆</div><p>No prize entries yet. Log them as you hop!</p></div>';return;}
+  el.innerHTML=prizes.map((p,i)=>`
+    <div class="pcard">
+      <div class="plbl">Prize Entry #${i+1}</div>
+      <div style="display:flex;gap:8px;align-items:flex-start">
+        <div style="flex:1">
+          <input class="pin" type="text" placeholder="Prize name..." value="${esc(p.prize||'')}" oninput="updatePrize(${i},'prize',this.value)">
+          <input class="pin" type="text" placeholder="Which store?" value="${esc(p.store||'')}" oninput="updatePrize(${i},'store',this.value)" style="margin-top:4px">
+          <input class="pin" type="text" placeholder="How entered (passport, Facebook, etc.)" value="${esc(p.method||'')}" oninput="updatePrize(${i},'method',this.value)" style="margin-top:4px">
+        </div>
+        <button onclick="deletePrize(${i})" style="background:none;border:none;color:var(--brn-s);font-size:20px;cursor:pointer;padding:4px;flex-shrink:0">×</button>
+      </div>
+    </div>`).join('');
+}
+function addPrize(){const p=load('prizes',[]);p.push({prize:'',store:'',method:''});save('prizes',p);renderPrizes();}
+function updatePrize(i,k,v){const p=load('prizes',[]);if(p[i])p[i][k]=v;save('prizes',p);}
+function deletePrize(i){const p=load('prizes',[]);p.splice(i,1);save('prizes',p);renderPrizes();}
+
+// ════════════════════════════════════════════════════════════
+// STORES
+// ════════════════════════════════════════════════════════════
+let activeRegion='',activeSearch='';
+
+function setRegion(r){
+  activeRegion=r;
+  document.querySelectorAll('.fscroll .chip').forEach(c=>c.classList.remove('on'));
+  event.target.classList.add('on');
+  renderStores();
+}
+function filterStores(q){activeSearch=q.toLowerCase();renderStores();}
+
+function renderStores(){
+  let list=STORES;
+  if(activeRegion==='__visited')list=list.filter(s=>storeData(s.id).visited);
+  else if(activeRegion==='__wish')list=list.filter(s=>storeData(s.id).wish);
+  else if(activeRegion==='__must')list=list.filter(s=>storeData(s.id).must);
+  else if(activeRegion)list=list.filter(s=>s.region===activeRegion);
+  if(activeSearch)list=list.filter(s=>(s.name+' '+s.city).toLowerCase().includes(activeSearch));
+
+  const el=document.getElementById('store-list');
+  if(!list.length){el.innerHTML='<div class="empty"><div class="ei">🧵</div><p>No stores match that filter.</p></div>';return;}
+  el.innerHTML=list.map(s=>{
+    const d=storeData(s.id);
+    const sc=d.stamp?'S':d.wish?'W':'';
+    const stampIcon=d.stamp?'✓':d.wish?'★':'';
+    return`<div class="stcard">
+      <div class="strow" onclick="togglePanel(${s.id})">
+        <div class="stamp ${sc}" onclick="event.stopPropagation();cycleStamp(${s.id})">${stampIcon}</div>
+        <div style="flex:1;min-width:0">
+          <div class="stname">${s.name}</div>
+          <div class="stcity">${s.city}, IN</div>
+        </div>
+        ${d.must?'<span class="must-flag" title="Must Return">🔖</span>':''}
+        <div class="rpill">${s.region}</div>
+      </div>
+      <div class="panel" id="panel-${s.id}">
+        ${s.note?`<div class="alert">⚠️ ${s.note}</div>`:''}
+        <div class="sweet">
+          <div class="sw-type">${s.sweet.type}</div>
+          <div class="sw-name">🍰 ${s.sweet.name}</div>
+          <div class="sw-tip">${s.sweet.tip}</div>
+        </div>
+        <div class="drow"><span class="di">📍</span><span>${s.addr}, ${s.city} ${s.zip}</span></div>
+        ${s.phone?`<div class="drow"><span class="di">📞</span><a href="tel:${s.phone}">${s.phone}</a></div>`:''}
+        ${s.web?`<div class="drow"><span class="di">🌐</span><a href="${s.web}" target="_blank">Visit Website</a></div>`:''}
+        <div style="font-size:12px;color:var(--brn-s);margin:8px 0 4px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Store Hours (from magazine)</div>
+        <input class="tinput" type="text" placeholder="Fill in from your magazine..." value="${esc(d.hours||'')}" oninput="updateStoreField(${s.id},'hours',this.value)" style="margin-bottom:10px">
+        <div style="font-size:12px;color:var(--brn-s);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">At-the-Store Checklist</div>
+        <div class="cks">
+          <div class="ck ${d.stamp?'on':''}" onclick="toggleField(${s.id},'stamp',this)">✓ Passport Stamped</div>
+          <div class="ck ${d.gift?'on':''}" onclick="toggleField(${s.id},'gift',this)">🎁 Free Gift Claimed</div>
+          <div class="ck ${d.fabric?'on':''}" onclick="toggleField(${s.id},'fabric',this)">🧵 Exclusive Fabric</div>
+        </div>
+        <div style="font-size:12px;color:var(--brn-s);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Your Rating</div>
+        <div class="stars" id="stars-${s.id}">
+          ${[1,2,3,4,5].map(n=>`<span class="star ${d.rating>=n?'on':''}" onclick="setRating(${s.id},${n})">★</span>`).join('')}
+        </div>
+        <div style="font-size:12px;color:var(--brn-s);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Your Notes</div>
+        <textarea class="tarea" placeholder="What'd you find? First impressions? Fabric notes..." oninput="updateStoreField(${s.id},'note',this.value)">${esc(d.note||'')}</textarea>
+        <div class="spend-row">
+          <span class="spend-lbl">💰 Spent at this store: $</span>
+          <input class="spend-in" type="number" placeholder="0" value="${d.spend||''}" min="0" oninput="updateStoreField(${s.id},'spend',parseFloat(this.value)||0)">
+        </div>
+        <div class="brow" style="margin-top:10px">
+          <div class="abtn ag ${d.visited?'on':''}" onclick="toggleVisited(${s.id},this)">✓ Visited</div>
+          <div class="abtn ah ${d.wish?'on':''}" onclick="toggleWish(${s.id},this)">★ Wishlist</div>
+          <div class="abtn ab ${d.must?'on':''}" onclick="toggleMust(${s.id},this)">🔖 Must Return</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function togglePanel(id){const p=document.getElementById('panel-'+id);p.classList.toggle('op');}
+function cycleStamp(id){
+  const d=storeData(id);
+  if(!d.stamp&&!d.wish){d.stamp=true;d.visited=true;}
+  else if(d.stamp){d.stamp=false;d.wish=true;}
+  else{d.wish=false;}
+  saveStore(id,d);renderStores();
+}
+function toggleField(id,field,el){
+  const d=storeData(id);d[field]=!d[field];
+  if(field==='stamp'&&d.stamp)d.visited=true;
+  saveStore(id,d);el.classList.toggle('on');
+  updateHome();
+}
+function toggleVisited(id,el){const d=storeData(id);d.visited=!d.visited;saveStore(id,d);el.classList.toggle('on');updateHome();}
+function toggleWish(id,el){const d=storeData(id);d.wish=!d.wish;saveStore(id,d);el.classList.toggle('on');}
+function toggleMust(id,el){const d=storeData(id);d.must=!d.must;saveStore(id,d);el.classList.toggle('on');}
+function updateStoreField(id,field,val){const d=storeData(id);d[field]=val;saveStore(id,d);}
+function setRating(id,n){
+  const d=storeData(id);d.rating=n;saveStore(id,d);
+  const stars=document.querySelectorAll(`#stars-${id} .star`);
+  stars.forEach((s,i)=>s.classList.toggle('on',i<n));
+}
+
+// ════════════════════════════════════════════════════════════
+// TRIPS
+// ════════════════════════════════════════════════════════════
+let tripModalTarget=null;
+function renderTrips(){
+  const trips=load('trips',[]);
+  const el=document.getElementById('trips-list');
+  const em=document.getElementById('trips-empty');
+  if(!trips.length){el.innerHTML='';em.style.display='block';return;}
+  em.style.display='none';
+  el.innerHTML=trips.map((t,ti)=>`
+    <div class="tcard">
+      <div class="thead">
+        <input class="tnin" type="text" placeholder="Day Trip Name..." value="${esc(t.name||'')}" oninput="updateTrip(${ti},'name',this.value)">
+        <input class="tdin" type="date" value="${t.date||''}" oninput="updateTrip(${ti},'date',this.value)">
+        <button class="tdel" onclick="deleteTrip(${ti})">×</button>
+      </div>
+      <div class="tbody">
+        ${(t.stores||[]).map((sid,si)=>{
+          const s=STORES.find(x=>x.id===sid);
+          return s?`<div class="tsitem">
+            <span>🧵</span>
+            <span style="flex:1">${s.name} — ${s.city}</span>
+            <button class="trm" onclick="removeFromTrip(${ti},${si})">×</button>
+          </div>`:'';
+        }).join('')}
+        <button class="addst" onclick="openTripModal(${ti})">+ Add a store to this trip</button>
+        <textarea class="tinput tarea" placeholder="Notes for this day — food stops, gas, anything..." oninput="updateTrip(${ti},'notes',this.value)" style="margin-top:8px;font-family:'Lora',serif">${esc(t.notes||'')}</textarea>
+      </div>
+    </div>`).join('');
+}
+function addTrip(){const trips=load('trips',[]);trips.push({name:'',date:'',stores:[],notes:''});save('trips',trips);renderTrips();}
+function updateTrip(i,k,v){const t=load('trips',[]);if(t[i])t[i][k]=v;save('trips',t);}
+function deleteTrip(i){if(!confirm('Delete this trip?'))return;const t=load('trips',[]);t.splice(i,1);save('trips',t);renderTrips();}
+function openTripModal(ti){
+  tripModalTarget=ti;
+  const trip=load('trips',[])[ti]||{};
+  const existing=trip.stores||[];
+  document.getElementById('modal-stores').innerHTML=STORES.map(s=>`
+    <div class="mopt">
+      <div><div class="monm">${s.name}</div><div class="moct">${s.city} · ${s.region}</div></div>
+      <button class="madd" onclick="addToTrip(${s.id})" ${existing.includes(s.id)?'style="background:var(--sage)"':''}>
+        ${existing.includes(s.id)?'Added':'Add'}
+      </button>
+    </div>`).join('');
+  document.getElementById('trip-modal').classList.add('op');
+}
+function addToTrip(sid){
+  const t=load('trips',[]);
+  const trip=t[tripModalTarget];
+  if(!trip.stores.includes(sid))trip.stores.push(sid);
+  save('trips',t);
+  openTripModal(tripModalTarget);
+  renderTrips();
+}
+function removeFromTrip(ti,si){const t=load('trips',[]);t[ti].stores.splice(si,1);save('trips',t);renderTrips();}
+function closeModal(){document.getElementById('trip-modal').classList.remove('op');}
+
+// ════════════════════════════════════════════════════════════
+// SHOPPING
+// ════════════════════════════════════════════════════════════
+let currentWho='cari',currentShopTab='list';
+function setWho(w){
+  currentWho=w;
+  document.querySelectorAll('.who-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.who-btn')[w==='cari'?0:1].classList.add('on');
+  renderShop();
+}
+function shopTab(t){
+  currentShopTab=t;
+  document.querySelectorAll('.shop-section').forEach(s=>s.style.display='none');
+  document.querySelectorAll('.sub-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('shop-'+t).style.display='block';
+  const idx={'list':0,'fabric':1,'gifts':2}[t];
+  document.querySelectorAll('.sub-btn')[idx].classList.add('on');
+  if(t==='list')renderShop();
+  if(t==='fabric')renderFabric();
+  if(t==='gifts')renderGifts();
+}
+function renderShop(){
+  // Budget
+  const budget=load(`budget_${currentWho}`,0);
+  const items=load(`items_${currentWho}`,[]);
+  const totalSpent=STORES.reduce((sum,s)=>{
+    const d=storeData(s.id);
+    return sum+(d.spend||0);
+  },0);
+  const listSpent=items.filter(i=>i.bought).reduce((s,i)=>s+(parseFloat(i.price)||0),0);
+  document.getElementById('bspent').textContent='$'+totalSpent.toFixed(2);
+  document.getElementById('budget-input').value=budget||'';
+  const pct=budget>0?Math.min(100,totalSpent/budget*100):0;
+  document.getElementById('bfill').style.width=pct+'%';
+  document.getElementById('bfill').style.background=pct>90?'var(--red)':pct>70?'var(--honey)':'var(--sage)';
+  // Items
+  const el=document.getElementById('items-list');
+  if(!items.length){el.innerHTML='<div class="empty"><div class="ei">🛍️</div><p>Add things you\'re hunting for!</p></div>';return;}
+  el.innerHTML=items.map((item,i)=>`
+    <div class="sitem">
+      <div class="sck ${item.done?'on':''}" onclick="toggleItem(${i})">
+        ${item.done?'✓':''}
+      </div>
+      <div class="stxt ${item.done?'done':''}" style="font-family:'Lora',serif">${esc(item.text)}</div>
+      <button class="sdel" onclick="deleteItem(${i})">×</button>
+    </div>`).join('');
+}
+function saveBudget(v){save(`budget_${currentWho}`,parseFloat(v)||0);renderShop();}
+function addItem(){
+  const inp=document.getElementById('add-item-in');
+  if(!inp.value.trim())return;
+  const items=load(`items_${currentWho}`,[]);
+  items.push({text:inp.value.trim(),done:false});
+  save(`items_${currentWho}`,items);
+  inp.value='';
+  renderShop();
+}
+function toggleItem(i){const items=load(`items_${currentWho}`,[]);if(items[i])items[i].done=!items[i].done;save(`items_${currentWho}`,items);renderShop();}
+function deleteItem(i){const items=load(`items_${currentWho}`,[]);items.splice(i,1);save(`items_${currentWho}`,items);renderShop();}
+
+function renderFabric(){
+  const items=load('fabric_list',[]);
+  const el=document.getElementById('fabric-list');
+  if(!items.length){el.innerHTML='<div class="empty"><div class="ei">🧵</div><p>Add projects and the fabrics you need.</p></div>';return;}
+  el.innerHTML=items.map((item,i)=>`
+    <div class="sitem">
+      <div class="sck ${item.found?'on':''}" onclick="toggleFabric(${i})">${item.found?'✓':''}</div>
+      <div style="flex:1">
+        <div class="stxt ${item.found?'done':''}" style="font-family:'Lora',serif">${esc(item.text)}</div>
+        ${item.yards?`<div style="font-size:11px;color:var(--brn-s)">${item.yards} yd${item.yards!=='1'?'s':''} needed</div>`:''}
+      </div>
+      <button class="sdel" onclick="deleteFabric(${i})">×</button>
+    </div>`).join('');
+}
+function addFabric(){
+  const inp=document.getElementById('fab-in');
+  if(!inp.value.trim())return;
+  const items=load('fabric_list',[]);
+  items.push({text:inp.value.trim(),found:false,yards:''});
+  save('fabric_list',items);
+  inp.value='';
+  renderFabric();
+}
+function toggleFabric(i){const items=load('fabric_list',[]);if(items[i])items[i].found=!items[i].found;save('fabric_list',items);renderFabric();}
+function deleteFabric(i){const items=load('fabric_list',[]);items.splice(i,1);save('fabric_list',items);renderFabric();}
+
+function renderGifts(){
+  const items=load('gift_list',[]);
+  const el=document.getElementById('gift-list');
+  if(!items.length){el.innerHTML='<div class="empty"><div class="ei">🎁</div><p>Add gifts you\'re shopping for and who they\'re for.</p></div>';return;}
+  el.innerHTML=items.map((item,i)=>`
+    <div class="sitem">
+      <div class="sck ${item.found?'on':''}" onclick="toggleGift(${i})">${item.found?'✓':''}</div>
+      <div class="stxt ${item.found?'done':''}" style="flex:1;font-family:'Lora',serif">${esc(item.text)}</div>
+      <button class="sdel" onclick="deleteGift(${i})">×</button>
+    </div>`).join('');
+}
+function addGift(){
+  const inp=document.getElementById('gift-in');
+  if(!inp.value.trim())return;
+  const items=load('gift_list',[]);
+  items.push({text:inp.value.trim(),found:false});
+  save('gift_list',items);
+  inp.value='';
+  renderGifts();
+}
+function toggleGift(i){const items=load('gift_list',[]);if(items[i])items[i].found=!items[i].found;save('gift_list',items);renderGifts();}
+function deleteGift(i){const items=load('gift_list',[]);items.splice(i,1);save('gift_list',items);renderGifts();}
+
+// ════════════════════════════════════════════════════════════
+// JOURNAL
+// ════════════════════════════════════════════════════════════
+function renderJournal(){
+  const entries=load('journal',[]);
+  const el=document.getElementById('journal-list');
+  const em=document.getElementById('journal-empty');
+  if(!entries.length){el.innerHTML='';em.style.display='block';return;}
+  em.style.display='none';
+  el.innerHTML=entries.map((e,i)=>`
+    <div class="jcard">
+      <div class="jhead">
+        <input class="jdin" type="date" value="${e.date||''}" oninput="updateJournal(${i},'date',this.value)">
+        <span style="flex:1"></span>
+        <button class="jdel" onclick="deleteJournal(${i})">×</button>
+      </div>
+      <div class="jbody">
+        <input class="jtitle" type="text" placeholder="What a day..." value="${esc(e.title||'')}" oninput="updateJournal(${i},'title',this.value)">
+        <textarea class="jtext" placeholder="Write about your adventure — what you found, where you went, what surprised you, the best pie of the day..." oninput="updateJournal(${i},'body',this.value)">${esc(e.body||'')}</textarea>
+      </div>
+    </div>`).join('');
+}
+function addJournal(){
+  const entries=load('journal',[]);
+  const today=new Date().toISOString().split('T')[0];
+  entries.unshift({date:today,title:'',body:''});
+  save('journal',entries);
+  renderJournal();
+}
+function updateJournal(i,k,v){const j=load('journal',[]);if(j[i])j[i][k]=v;save('journal',j);}
+function deleteJournal(i){if(!confirm('Delete this entry?'))return;const j=load('journal',[]);j.splice(i,1);save('journal',j);renderJournal();}
+
+// ════════════════════════════════════════════════════════════
+// QUICK DIAL
+// ════════════════════════════════════════════════════════════
+let dialSearch='';
+function filterDial(q){dialSearch=q.toLowerCase();renderDial();}
+function renderDial(){
+  let list=STORES;
+  if(dialSearch)list=list.filter(s=>(s.name+' '+s.city).toLowerCase().includes(dialSearch));
+  const el=document.getElementById('dial-list');
+  el.innerHTML=list.map(s=>`
+    <div class="citem">
+      <div><div class="cname">${s.name}</div><div class="ccity">${s.city}</div></div>
+      ${s.phone?`<a class="cphone" href="tel:${s.phone}">${s.phone}</a>`:'<span style="font-size:12px;color:var(--brn-s)">—</span>'}
+    </div>`).join('');
+}
+
+// ════════════════════════════════════════════════════════════
+// UTILS
+// ════════════════════════════════════════════════════════════
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+// INIT
+updateHome();
+renderStores();
+renderDial();
+</script>
+</body>
+</html>
